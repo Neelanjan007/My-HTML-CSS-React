@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>BookWorld - Your Online Bookstore</title>
+  <style>
+    body {
+      font-family: "Segoe UI", Roboto, Arial, sans-serif;
+      margin: 0;
+      background-color: #fafafa;
+      color: #222;
+      line-height: 1.6;
+    }
+    .wrap {
+      max-width: 1000px;
+      margin: auto;
+      padding: 15px;
+    }
+    img.banner {
+      width: 100%;
+      border-radius: 8px;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+    }
+    h1 {
+      margin: 12px 0 6px;
+      font-size: 1.8rem;
+      color: #111;
+    }
+    p.lead {
+      font-size: 0.95rem;
+      color: #555;
+      margin-bottom: 18px;
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 0.9rem;
+      background: white;
+      border-radius: 6px;
+      overflow: hidden;
+    }
+    th, td {
+      padding: 10px;
+      border-bottom: 1px solid #eee;
+    }
+    th {
+      background-color: #f2f4f8;
+      text-align: left;
+      font-weight: 600;
+    }
+    .two {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 20px;
+      margin-top: 15px;
+    }
+    .split {
+      flex: 1;
+      min-width: 260px;
+      background: white;
+      padding: 10px 15px;
+      border-radius: 6px;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+    }
+    ol, ul {
+      margin: 0;
+      padding-left: 20px;
+    }
+    .media {
+      position: relative;
+      width: 100%;
+      padding-top: 56.25%;
+      border-radius: 6px;
+      overflow: hidden;
+    }
+    .media iframe {
+      position: absolute;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      border: 0;
+    }
+    form {
+      display: flex;
+      flex-direction: column;
+    }
+    input, select, textarea {
+      padding: 8px;
+      margin-bottom: 8px;
+      font-size: 0.9rem;
+      border: 1px solid #ddd;
+      border-radius: 4px;
+    }
+    input[type="submit"] {
+      background-color: #2b6cb0;
+      color: white;
+      font-weight: bold;
+      cursor: pointer;
+    }
+    input[type="submit"]:hover {
+      background-color: #245a94;
+    }
+    footer {
+      background-color: #f2f4f8;
+      padding: 15px;
+      margin-top: 25px;
+      display: flex;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      font-size: 0.9rem;
+      border-top: 1px solid #ddd;
+    }
+    footer h3 {
+      margin-top: 0;
+      font-size: 1rem;
+      color: #111;
+    }
+    footer a {
+      text-decoration: none;
+      color: #2b6cb0;
+    }
+    address {
+      font-style: normal;
+      color: #555;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="wrap">
+    <img class="banner" src="https://images.unsplash.com/photo-1524995997946-a1c2e315a42f?q=80&w=2000&auto=format&fit=crop" alt="Stack of books" />
+
+    <h1>Welcome to BookWorld</h1>
+    <p class="lead">
+      BookWorld is a premier online bookstore. Explore a wide range of Indian and global titles, with curated recommendations and fast, secure delivery.
+    </p>
+
+    <h2>Book Categories</h2>
+    <table>
+      <thead>
+        <tr>
+          <th>Category</th>
+          <th>Number of Books</th>
+          <th>Top Author</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr><td>Fiction</td><td>3,450</td><td>Chetan Bhagat</td></tr>
+        <tr><td>Non-Fiction</td><td>2,120</td><td>Arundhati Roy</td></tr>
+        <tr><td>Children's</td><td>1,680</td><td>Ruskin Bond</td></tr>
+        <tr><td>Science</td><td>1,020</td><td>APJ Abdul Kalam</td></tr>
+      </tbody>
+    </table>
+
+    <div class="two">
+      <div class="split">
+        <h2>Best-Sellers</h2>
+        <ol>
+          <li>Half Girlfriend — Chetan Bhagat</li>
+          <li>The God of Small Things — Arundhati Roy</li>
+          <li>Wings of Fire — APJ Abdul Kalam</li>
+          <li>The White Tiger — Aravind Adiga</li>
+          <li>Train to Pakistan — Khushwant Singh</li>
+        </ol>
+      </div>
+      <div class="split">
+        <h2>Upcoming Releases</h2>
+        <ul>
+          <li>The Elephant in the Womb — Kalki Koechlin</li>
+          <li>Victory City — Salman Rushdie</li>
+          <li>The Book of Everlasting Things — Aanchal Malhotra</li>
+          <li>Tomb of Sand — Geetanjali Shree</li>
+          <li>The Seven Moons of Maali Almeida — Shehan Karunatilaka</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="two">
+      <div class="split">
+        <h2>Book Preview</h2>
+        <div class="media">
+          <iframe src="https://www.youtube.com/embed/nfP5N9Yc72A" allowfullscreen></iframe>
+        </div>
+      </div>
+      <div class="split">
+        <h2>Newsletter Signup</h2>
+        <p style="color: #555;">Subscribe to get updates on new releases and offers.</p>
+        <form>
+          <input type="text" placeholder="Name" required>
+          <input type="email" placeholder="Email" required>
+          <select>
+            <option>Fiction</option>
+            <option>Non-Fiction</option>
+            <option>Children's</option>
+            <option>Science</option>
+            <option>History</option>
+          </select>
+          <textarea placeholder="Comments"></textarea>
+          <input type="submit" value="Subscribe">
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <footer>
+    <div>
+      <h3>Links</h3>
+      <ul style="list-style: none; padding: 0; margin: 0;">
+        <li><a href="https://www.goodreads.com" target="_blank">Goodreads</a></li>
+        <li><a href="https://www.bookbub.com" target="_blank">BookBub</a></li>
+        <li><a href="https://www.amazon.in/books" target="_blank">Amazon Books</a></li>
+      </ul>
+    </div>
+    <div>
+      <h3>Contact</h3>
+      <address>
+        Neelanjan Dhara<br>
+        Kolkata, West Bengal, 700007<br>
+        📞 +91-79084-55138<br>
+        📧 <a href="mailto:neelanjandhara@gmail.com">neelanjandhara@gmail.com</a>
+      </address>
+    </div>
+  </footer>
+
+</body>
+</html>
