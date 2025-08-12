@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Website Feedback Survey</title>
+  <style>
+    
+    :root{
+      --page-bg: #22282c;        
+      --card-bg: #ffffff;
+      --header-blue: #0b72b7;    
+      --muted: #6b7280;
+      --accent: #0b72b7;
+      --aside-bg: #fff6d9;       
+      --radius: 8px;
+      --card-width: 920px;
+    }
+    html,body { height:100%; margin:0; font-family: "Segoe UI", Roboto, Arial, sans-serif; background:var(--page-bg); color:#1f2937; -webkit-font-smoothing:antialiased; }
+
+    
+    .page {
+      max-width: var(--card-width);
+      margin: 28px auto;
+      background: var(--card-bg);
+      border-radius: var(--radius);
+      overflow: hidden;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.35);
+      border: 1px solid rgba(0,0,0,0.08);
+    }
+
+    
+    header.site-header {
+      background: var(--header-blue);
+      color: #fff;
+      padding: 22px 26px;
+    }
+    header .title {
+      margin: 0;
+      font-size: 22px;
+      font-weight: 700;
+      letter-spacing: 0.6px;
+      text-transform: uppercase;
+    }
+    header .subtitle {
+      margin: 6px 0 0 0;
+      font-size: 13px;
+      color: rgba(255,255,255,0.95);
+      font-weight: 400;
+    }
+
+    
+    nav.main-nav {
+      background: #f6f9fb;
+      padding: 8px 22px;
+      border-bottom: 1px solid #e6eef6;
+    }
+    nav a {
+      color: var(--accent);
+      text-decoration: none;
+      margin-right: 14px;
+      font-size: 14px;
+    }
+
+    
+    .content {
+      display: grid;
+      grid-template-columns: 1fr 320px;
+      gap: 22px;
+      padding: 20px;
+      align-items: start;
+    }
+    @media (max-width:960px){
+      .content { grid-template-columns: 1fr; padding: 18px; }
+    }
+
+    
+    form.survey {
+      background: #fff;
+      padding: 14px 18px;
+      border: 1px solid #eef3f7;
+      border-radius: 6px;
+    }
+
+    
+    form h3 {
+      margin: 10px 0 8px;
+      font-size: 18px;
+      color: #0f1724;
+    }
+
+    
+    .form-row {
+      display: grid;
+      grid-template-columns: 180px 1fr;
+      gap: 8px 16px;
+      align-items: center;
+      padding: 8px 0;
+      border-bottom: 1px solid rgba(15,23,36,0.03);
+    }
+    .form-row:last-child { border-bottom: none; }
+    @media (max-width:720px){
+      .form-row { grid-template-columns: 1fr; }
+    }
+
+    label {
+      font-size: 14px;
+      color: #111827;
+      padding-right: 6px;
+      display: inline-block;
+    }
+
+    input[type="text"], input[type="email"], input[type="number"], textarea, select, input[type="range"] {
+      width: 100%;
+      padding: 9px 10px;
+      border-radius: 6px;
+      border: 1px solid #d6dde3;
+      font-size: 14px;
+      box-sizing: border-box;
+    }
+    textarea { min-height: 100px; resize: vertical; }
+
+    
+    .range-wrap { display:flex; gap:12px; align-items:center; }
+    input[type="range"] { width: 100%; }
+    .range-value {
+      min-width: 36px;
+      text-align:center;
+      font-weight:600;
+      color: var(--accent);
+    }
+
+    
+    .choice-row { display:flex; gap:16px; align-items:center; flex-wrap:wrap; }
+    .choice-row label { display:inline-flex; gap:8px; align-items:center; cursor:pointer; font-size:14px; color:#1f2937; }
+
+    
+    aside.note {
+      background: var(--aside-bg);
+      border: 1px solid #f1e6b9;
+      padding: 14px;
+      border-radius: 6px;
+      color: #2b2b2b;
+      font-size: 14px;
+    }
+    aside.note h4 { margin:0 0 8px; color:#1f2937; }
+    aside.note p { margin:0; color:#3b3b3b; }
+
+    
+    .actions {
+      display:flex;
+      gap:12px;
+      justify-content:flex-start;
+      padding-top: 12px;
+    }
+    button.submit {
+      background: var(--accent);
+      color: #fff;
+      border: none;
+      padding: 10px 18px;
+      border-radius: 6px;
+      font-weight: 700;
+      cursor: pointer;
+      box-shadow: 0 6px 16px rgba(11,114,183,0.12);
+    }
+    button.reset {
+      background: transparent;
+      color: var(--accent);
+      border: 2px solid var(--accent);
+      padding: 8px 14px;
+      border-radius: 6px;
+      font-weight: 700;
+      cursor: pointer;
+    }
+    button.submit:hover { filter:brightness(.98); transform: translateY(-1px); }
+    button.reset:hover { background: rgba(11,114,183,0.06); }
+
+    
+    .helper { font-size: 13px; color: var(--muted); padding: 8px 0 0 0; }
+    footer.site-footer { text-align:center; padding: 14px; background:#f6f9fb; border-top:1px solid #e6eef6; font-size:13px; color:var(--muted); }
+    .req { color:#d04444; margin-left: 6px; font-weight:600; }
+  </style>
+</head>
+<body>
+  <div class="page">
+    
+    <header class="site-header" role="banner">
+      <h1 class="title">Website Feedback Survey</h1>
+      <p class="subtitle">We value your opinion. Please take a minute to share your thoughts.</p>
+    </header>
+
+   
+    <nav class="main-nav" role="navigation" aria-label="Main navigation">
+      <a href="#" aria-current="page">Home</a>
+      <a href="#">About</a>
+      <a href="#">Contact</a>
+    </nav>
+
+    
+    <main class="content" role="main">
+      
+      <form class="survey" action="submit_survey.php" method="post" novalidate>
+       
+        <h3>Personal Information</h3>
+
+        <div class="form-row">
+          <label for="fullname">Full Name <span class="req">*</span></label>
+          <div>
+            <input id="fullname" name="fullname" type="text" placeholder="Your full name" required autofocus aria-required="true">
+          </div>
+        </div>
+
+        <div class="form-row">
+          <label for="email">Email Address <span class="req">*</span></label>
+          <div>
+            <input id="email" name="email" type="email" placeholder="you@example.com" required aria-required="true">
+          </div>
+        </div>
+
+        <div class="form-row">
+          <label for="age">Age</label>
+          <div>
+            <input id="age" name="age" type="number" min="10" max="100" placeholder="e.g., 25">
+            <div class="helper">Please enter your age (10–100).</div>
+          </div>
+        </div>
+
+       
+        <h3 style="margin-top:18px;">Website Rating</h3>
+
+        <div class="form-row">
+          <label for="design">Design (1–10)</label>
+          <div>
+            <div class="range-wrap">
+              <input id="design" name="design" type="range" min="1" max="10" value="6" oninput="updateRange(this)">
+              <div class="range-value" id="designVal">6</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="form-row">
+          <label>Content Quality</label>
+          <div>
+            <div class="choice-row" role="radiogroup" aria-label="Content quality">
+              <label><input type="radio" name="quality" value="Excellent"> Excellent</label>
+              <label><input type="radio" name="quality" value="Good" checked> Good</label>
+              <label><input type="radio" name="quality" value="Average"> Average</label>
+              <label><input type="radio" name="quality" value="Poor"> Poor</label>
+            </div>
+          </div>
+        </div>
+
+        <div class="form-row">
+          <label for="most">Most visited page</label>
+          <div>
+            <select id="most" name="most_visited">
+              <option value="home">Home</option>
+              <option value="blog">Blog</option>
+              <option value="products">Products</option>
+              <option value="contact">Contact</option>
+            </select>
+          </div>
+        </div>
+
+        
+        <h3 style="margin-top:18px;">Suggestions</h3>
+
+        <div class="form-row">
+          <label for="suggest">Your suggestions</label>
+          <div>
+            <textarea id="suggest" name="suggestions" placeholder="Write your suggestions here..."></textarea>
+          </div>
+        </div>
+
+        <div class="form-row">
+          <label></label>
+          <div>
+            <label style="display:inline-flex; gap:10px; align-items:center;">
+              <input id="contactConsent" name="contact_consent" type="checkbox" value="yes">
+              I agree to be contacted regarding my feedback
+            </label>
+          </div>
+        </div>
+
+        
+        <div class="form-row">
+          <label></label>
+          <div>
+            <div class="actions">
+              <button type="submit" class="submit">Submit</button>
+              <button type="reset" class="reset">Reset</button>
+            </div>
+            <div class="helper">Thanks — your feedback helps us improve the website experience for everyone.</div>
+          </div>
+        </div>
+      </form>
+
+     
+      <aside class="note" role="complementary" aria-label="Why your feedback matters">
+        <h4>Why your feedback matters</h4>
+        <p>Your feedback helps us improve our website experience for everyone. Thank you for taking the time to share your thoughts.</p>
+      </aside>
+    </main>
+
+   
+    <footer class="site-footer" role="contentinfo">
+      © 2025 Website Survey
+    </footer>
+  </div>
+
+  <script>
+    
+    function updateRange(el){
+      const v = el.value;
+      document.getElementById(el.id + 'Val').textContent = v;
+    }
+    
+    (function(){ const r = document.getElementById('design'); if(r) updateRange(r); })();
+  </script>
+</body>
+</html>
