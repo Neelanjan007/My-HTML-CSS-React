@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Online Grocery Order</title>
+
+  <style>
+    :root{
+      --bg: #f6f8f9;
+      --card: #ffffff;
+      --accent: #2b7a78;      
+      --accent-2: #2b6cb0;    
+      --muted: #6b7280;
+      --radius: 10px;
+      --shadow: 0 6px 22px rgba(13, 26, 33, 0.06);
+    }
+
+   
+    html,body { height:100%; margin:0; font-family: "Segoe UI", Roboto, Arial, sans-serif; background:var(--bg); color:#123; }
+    .container { max-width: 920px; margin: 28px auto; width: 94%; }
+
+    
+    h2.title {
+      text-align: center;
+      margin: 6px 0 20px;
+      font-size: 1.45rem;
+      letter-spacing: 0.6px;
+      color: #0f1724;
+    }
+
+   
+    form.card {
+      background: var(--card);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      padding: 20px;
+      border: 1px solid rgba(15, 23, 36, 0.06);
+    }
+    .note { color: var(--muted); font-size: 0.9rem; margin-bottom: 10px; text-align:center; }
+
+    /* Fieldset layout */
+    fieldset {
+      border: 1px solid #e6edf0;
+      padding: 14px 18px;
+      border-radius: 8px;
+      margin-bottom: 16px;
+      background: linear-gradient(180deg, rgba(255,255,255,0.99), rgba(250,250,250,0.99));
+    }
+    legend {
+      padding: 0 10px;
+      color: var(--accent-2);
+      font-weight: 600;
+      font-size: 1.02rem;
+    }
+
+    /* Grid for inputs */
+    .grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px 20px;
+      align-items: start;
+      margin-top: 8px;
+    }
+    @media (max-width:720px){
+      .grid { grid-template-columns: 1fr; }
+    }
+
+
+    label { display:block; font-size: 0.95rem; color:#163; margin-bottom:6px; }
+    input[type="text"], input[type="email"], input[type="tel"],
+    input[type="number"], input[type="date"], input[type="time"],
+    select, textarea {
+      width: 100%;
+      box-sizing: border-box;
+      padding: 10px 12px;
+      border-radius: 6px;
+      border: 1px solid #d6dde3;
+      background: #fff;
+      font-size: 0.95rem;
+      color: #111;
+      outline: none;
+      transition: box-shadow .12s ease, border-color .12s ease;
+    }
+    input:focus, textarea:focus, select:focus {
+      border-color: var(--accent-2);
+      box-shadow: 0 4px 14px rgba(43,108,176,0.08);
+    }
+    textarea { min-height: 90px; resize: vertical; }
+
+    
+    .row-inline { display:flex; gap:14px; align-items:center; flex-wrap:wrap; }
+    .checkbox label, .radio label { display:inline-flex; gap:8px; align-items:center; cursor:pointer; color:#222; }
+
+   
+    .helper { font-size: 0.85rem; color: var(--muted); margin-top:6px; }
+
+   
+    .actions { display:flex; gap:12px; justify-content:center; margin-top: 16px; }
+    .btn {
+      padding: 10px 18px;
+      border-radius: 8px;
+      border: none;
+      cursor: pointer;
+      font-weight: 600;
+      font-size: 0.95rem;
+    }
+    .btn-primary { background: var(--accent); color: #fff; box-shadow: 0 6px 16px rgba(43,122,120,0.12); }
+    .btn-secondary { background: transparent; color: #374151; border: 1px solid #d1d5db; }
+    .btn-primary:hover { filter: brightness(.98); transform: translateY(-1px); }
+    .btn-secondary:hover { background: #f3f4f6; }
+
+    .req { color: #d04444; margin-left:4px; }
+
+
+    .compact { display:flex; gap:10px; align-items:center; }
+    .compact select { width: auto; min-width: 120px; }
+
+    
+    .footnote { text-align:center; color:var(--muted); font-size:0.85rem; margin-top:12px; }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h2 class="title">Online Grocery Order</h2>
+
+    <form id="groceryForm" class="card" action="order.php" method="post" enctype="multipart/form-data" novalidate>
+      <div class="note">Please fill all <strong>required</strong> fields. We deliver within city limits only.</div>
+
+      <!-- Customer Details -->
+      <fieldset>
+        <legend>Customer Details</legend>
+
+        <div class="grid">
+          <div>
+            <label for="fullname">Full Name <span class="req">*</span></label>
+            <input id="fullname" name="fullname" type="text" placeholder="e.g., Anjali Mehta" required autofocus>
+          </div>
+
+          <div>
+            <label for="email">Email <span class="req">*</span></label>
+            <input id="email" name="email" type="email" placeholder="you@example.com" required>
+          </div>
+
+          <div>
+            <label for="mobile">Mobile Number <span class="req">*</span></label>
+            <input id="mobile" name="mobile" type="tel" placeholder="10 digit mobile number" pattern="[0-9]{10}" title="Enter 10 digit mobile number (numbers only)" required>
+            <div class="helper">Format: 10 digits (e.g., 9876543210)</div>
+          </div>
+
+          <div>
+            <label for="address">Delivery Address <span class="req">*</span></label>
+            <textarea id="address" name="address" placeholder="House no., Street, Locality, City, PIN" required></textarea>
+          </div>
+        </div>
+      </fieldset>
+
+      <!-- Order Details -->
+      <fieldset>
+        <legend>Order Details</legend>
+
+        <div class="grid">
+          <div>
+            <label>Grocery Items <span class="req">*</span></label>
+            <div class="row-inline checkbox" aria-label="Grocery items">
+              <label><input type="checkbox" name="items[]" value="Rice"> Rice</label>
+              <label><input type="checkbox" name="items[]" value="Milk"> Milk</label>
+              <label><input type="checkbox" name="items[]" value="Bread"> Bread</label>
+              <label><input type="checkbox" name="items[]" value="Eggs"> Eggs</label>
+              <label><input type="checkbox" name="items[]" value="Sugar"> Sugar</label>
+            </div>
+            <div class="helper">Select at least one item to order.</div>
+          </div>
+
+          <div>
+            <label for="quantity">Quantity (per selected item) <span class="req">*</span></label>
+            <input id="quantity" name="quantity" type="number" min="1" max="10" value="1" required>
+            <div class="helper">Allowed: 1 to 10</div>
+          </div>
+
+          <div>
+            <label for="date">Delivery Date <span class="req">*</span></label>
+            <input id="date" name="delivery_date" type="date" required>
+          </div>
+
+          <div>
+            <label for="time">Preferred Delivery Time</label>
+            <input id="time" name="delivery_time" type="time" placeholder="HH:MM">
+            <div class="helper">Optional — we will try to match your preferred time.</div>
+          </div>
+
+          <div style="grid-column: 1 / -1;">
+            <label>Payment Method <span class="req">*</span></label>
+            <div class="row-inline radio" role="radiogroup" aria-label="Payment method">
+              <label><input type="radio" name="payment_method" value="cod" required> Cash on Delivery</label>
+              <label><input type="radio" name="payment_method" value="upi"> UPI</label>
+              <label><input type="radio" name="payment_method" value="card"> Card</label>
+            </div>
+          </div>
+        </div>
+      </fieldset>
+
+      <!-- Special Instructions -->
+      <fieldset>
+        <legend>Special Instructions</legend>
+        <label for="special">If any (optional)</label>
+        <textarea id="special" name="special_instructions" placeholder="E.g., leave at door / ring bell once"></textarea>
+      </fieldset>
+
+      <!-- Confirmation & Buttons -->
+      <fieldset>
+        <legend>Confirmation</legend>
+        <div style="display:flex; gap:12px; align-items:center; flex-wrap:wrap;">
+          <label style="display:inline-flex; align-items:center; gap:8px;">
+            <input id="confirm" name="confirm_order" type="checkbox" required> I confirm my order
+          </label>
+          <div style="color:var(--muted); font-size:0.95rem;">(Checking confirms you agree to our delivery policy.)</div>
+        </div>
+
+        <div class="actions" style="margin-top:14px;">
+          <button type="submit" class="btn btn-primary">Submit Order</button>
+          <button type="reset" class="btn btn-secondary">Reset Form</button>
+        </div>
+      </fieldset>
+
+      <div class="footnote">You will receive an email confirmation after placing the order.</div>
+    </form>
+  </div>
+
+  <script>
+    
+    (function(){
+      const form = document.getElementById('groceryForm');
+
+      form.addEventListener('submit', function(e){
+        // Ensure at least one grocery item checked
+        const checkedItems = form.querySelectorAll('input[name="items[]"]:checked');
+        if (!checkedItems.length) {
+          alert('Please select at least one grocery item to order.');
+          e.preventDefault();
+          return;
+        }
+
+        // Validate delivery date is not in the past
+        const dateInput = form.querySelector('[name="delivery_date"]');
+        if (dateInput && dateInput.value) {
+          const today = new Date();
+          today.setHours(0,0,0,0);
+          const selected = new Date(dateInput.value);
+          if (selected < today) {
+            alert('Delivery date cannot be in the past. Please choose a future date.');
+            e.preventDefault();
+            return;
+          }
+        }
+
+        
+        const mobile = form.querySelector('[name="mobile"]');
+        if (mobile && !/^[0-9]{10}$/.test(mobile.value)) {
+          alert('Mobile number must be 10 digits.');
+          e.preventDefault();
+          return;
+        }
+
+        
+      });
+    })();
+  </script>
+</body>
+</html>
