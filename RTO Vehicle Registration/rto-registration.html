@@ -1,0 +1,399 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>RTO Vehicle Registration</title>
+
+  
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+
+  <link rel="stylesheet" href="C:\MyHTMLandCSS\RTO Vehicle Registration\assets-rto.js">
+</head>
+
+<body>
+  <header class="py-4 mb-2 bg-white border-bottom">
+    <div class="container container-narrow d-flex align-items-center justify-content-between">
+      <h1 class="h4 m-0">RTO Vehicle Registration</h1>
+      <span class="text-muted small">Bootstrap 5 • Validated</span>
+    </div>
+  </header>
+
+  <main class="container container-narrow my-4">
+    
+    <div class="mb-3">
+      <div class="d-flex justify-content-between align-items-center mb-1">
+        <span class="small text-muted">Progress</span>
+        <span id="progressText" class="small fw-semibold">0%</span>
+      </div>
+      <div class="progress" style="height: 10px;">
+        <div id="progressBar" class="progress-bar bg-success" style="width:0%" role="progressbar"
+             aria-valuemin="0" aria-valuemax="100"></div>
+      </div>
+    </div>
+
+    
+    <div class="card card-soft rounded-4">
+      <div class="card-body p-4 p-sm-5">
+        <form id="rtoForm" novalidate>
+          <div class="accordion" id="rtoAccordion">
+            
+            <div class="accordion-item">
+              <h2 class="accordion-header" id="ownerHead">
+                <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#ownerSec" aria-expanded="true">
+                  1. Owner Details
+                </button>
+              </h2>
+              <div id="ownerSec" class="accordion-collapse collapse show" data-bs-parent="#rtoAccordion">
+                <div class="accordion-body" data-section="owner">
+                  <div class="row g-3">
+                    <div class="col-12">
+                      <label class="form-label">Full Name</label>
+                      <input type="text" class="form-control" name="fullName" placeholder="e.g. Priya Natarajan" required>
+                      <div class="invalid-feedback">Please enter your full name.</div>
+                    </div>
+
+                    <div class="col-md-6">
+                      <label class="form-label">Email</label>
+                      <input type="email" class="form-control" name="email" placeholder="name@example.com" required>
+                      <div class="invalid-feedback">Enter a valid email.</div>
+                    </div>
+
+                    <div class="col-md-6">
+                      <label class="form-label">Mobile (India)</label>
+                      <div class="input-group">
+                        <span class="input-group-text">+91</span>
+                        <input type="tel" class="form-control" name="mobile" placeholder="98XXXXXXXX"
+                               pattern="^[6-9]\d{9}$" required>
+                        <div class="invalid-feedback">Enter a valid 10-digit Indian mobile (starts 6–9).</div>
+                      </div>
+                    </div>
+
+                    <div class="col-md-6">
+                      <label class="form-label">Date of Birth</label>
+                      <input type="date" class="form-control" name="dob" required>
+                      <div class="invalid-feedback">You must be at least 18 years old.</div>
+                    </div>
+
+                    <div class="col-md-6">
+                      <label class="form-label">Aadhaar</label>
+                      <input type="text" class="form-control" name="aadhaar" placeholder="1234 5678 9012"
+                             pattern="^\d{4}\s?\d{4}\s?\d{4}$" required>
+                      <div class="small-hint">Format: 12 digits (spaces optional)</div>
+                      <div class="invalid-feedback">Enter a valid 12-digit Aadhaar.</div>
+                    </div>
+
+                    <div class="col-md-6">
+                      <label class="form-label">PAN</label>
+                      <input type="text" class="form-control text-uppercase" name="pan" placeholder="ABCDE1234F"
+                             pattern="^[A-Z]{5}\d{4}[A-Z]{1}$" required>
+                      <div class="invalid-feedback">PAN must be 5 letters + 4 digits + 1 letter (e.g., ABCDE1234F).</div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            
+            <div class="accordion-item">
+              <h2 class="accordion-header" id="addrHead">
+                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#addrSec">
+                  2. Address
+                </button>
+              </h2>
+              <div id="addrSec" class="accordion-collapse collapse" data-bs-parent="#rtoAccordion">
+                <div class="accordion-body" data-section="address">
+                  <div class="row g-3">
+                    <div class="col-12">
+                      <label class="form-label">Address Line 1</label>
+                      <input type="text" class="form-control" name="addr1" required>
+                      <div class="invalid-feedback">Address Line 1 is required.</div>
+                    </div>
+                    <div class="col-12">
+                      <label class="form-label">Address Line 2 (optional)</label>
+                      <input type="text" class="form-control" name="addr2">
+                    </div>
+                    <div class="col-md-4">
+                      <label class="form-label">City</label>
+                      <input type="text" class="form-control" name="city" required>
+                      <div class="invalid-feedback">City is required.</div>
+                    </div>
+                    <div class="col-md-4">
+                      <label class="form-label">State</label>
+                      <select class="form-select" name="state" required>
+                        <option value="">Choose…</option>
+                        <option>Tamil Nadu</option><option>Karnataka</option><option>Telangana</option>
+                        <option>Maharashtra</option><option>Kerala</option><option>Delhi</option>
+                      </select>
+                      <div class="invalid-feedback">Select your state.</div>
+                    </div>
+                    <div class="col-md-4">
+                      <label class="form-label">PIN</label>
+                      <input type="text" class="form-control" name="pin" placeholder="6 digits" pattern="^\d{6}$" required>
+                      <div class="invalid-feedback">Enter a valid 6-digit PIN.</div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            
+            <div class="accordion-item">
+              <h2 class="accordion-header" id="vehHead">
+                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#vehSec">
+                  3. Vehicle Details
+                </button>
+              </h2>
+              <div id="vehSec" class="accordion-collapse collapse" data-bs-parent="#rtoAccordion">
+                <div class="accordion-body" data-section="vehicle">
+                  <div class="row g-3">
+                    <div class="col-md-6">
+                      <label class="form-label">Registration No.</label>
+                      <input type="text" class="form-control text-uppercase" name="regno"
+                             placeholder="TN10AB1234" pattern="^[A-Z]{2}\d{2}[A-Z]{1,2}\d{4}$" required>
+                      <div class="invalid-feedback">Format example: TN10AB1234.</div>
+                    </div>
+
+                    <div class="col-md-6">
+                      <label class="form-label">Vehicle Class</label>
+                      <select class="form-select" name="vclass" required>
+                        <option value="">Choose…</option>
+                        <option>LMV</option><option>HMV</option><option>Two Wheeler</option><option>Tractor</option>
+                      </select>
+                      <div class="invalid-feedback">Select vehicle class.</div>
+                    </div>
+
+                    <div class="col-md-6">
+                      <label class="form-label d-block">Fuel Type</label>
+                      <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="radio" name="fuel" value="Petrol" required>
+                        <label class="form-check-label">Petrol</label>
+                      </div>
+                      <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="radio" name="fuel" value="Diesel">
+                        <label class="form-check-label">Diesel</label>
+                      </div>
+                      <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="radio" name="fuel" value="CNG">
+                        <label class="form-check-label">CNG</label>
+                      </div>
+                      <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="radio" name="fuel" value="EV">
+                        <label class="form-check-label">EV</label>
+                      </div>
+                      <div class="invalid-feedback d-block js-fuel-feedback">Choose a fuel type.</div>
+                    </div>
+
+                    <div class="col-md-6">
+                      <label class="form-label">Make / Model</label>
+                      <input type="text" class="form-control" name="make" placeholder="e.g. Maruti Swift" required>
+                      <div class="invalid-feedback">Enter make/model.</div>
+                    </div>
+
+                    <div class="col-md-6">
+                      <label class="form-label">Chassis No.</label>
+                      <input type="text" class="form-control text-uppercase" name="chassis" minlength="6" maxlength="20" required>
+                      <div class="invalid-feedback">Enter chassis number (6–20 chars).</div>
+                    </div>
+
+                    <div class="col-md-6">
+                      <label class="form-label">Engine No.</label>
+                      <input type="text" class="form-control text-uppercase" name="engine" minlength="6" maxlength="20" required>
+                      <div class="invalid-feedback">Enter engine number (6–20 chars).</div>
+                    </div>
+
+                    <div class="col-md-4">
+                      <label class="form-label">Year of Manufacture</label>
+                      <input type="number" class="form-control" name="yom" min="1980" max="2099" step="1" required>
+                      <div class="invalid-feedback">Enter a valid year.</div>
+                    </div>
+
+                    <div class="col-md-4">
+                      <label class="form-label">Purchase Date</label>
+                      <input type="date" class="form-control" name="purchased" required>
+                      <div class="invalid-feedback">Purchase date cannot be in the future.</div>
+                    </div>
+
+                    <div class="col-md-4">
+                      <label class="form-label">Color</label>
+                      <input type="text" class="form-control" name="color" required>
+                      <div class="invalid-feedback">Enter vehicle color.</div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            
+            <div class="accordion-item">
+              <h2 class="accordion-header" id="compHead">
+                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#compSec">
+                  4. Compliance &amp; Insurance
+                </button>
+              </h2>
+              <div id="compSec" class="accordion-collapse collapse" data-bs-parent="#rtoAccordion">
+                <div class="accordion-body" data-section="compliance">
+                  <div class="row g-3">
+                    <div class="col-md-6">
+                      <label class="form-label">Emission Norm</label>
+                      <select class="form-select" name="emission" required>
+                        <option value="">Choose…</option>
+                        <option>BS-III</option><option>BS-IV</option><option>BS-V</option><option>BS-VI</option>
+                      </select>
+                      <div class="invalid-feedback">Select emission norm.</div>
+                    </div>
+
+                    <div class="col-md-6">
+                      <label class="form-label">Insurance Policy No.</label>
+                      <input type="text" class="form-control" name="policy" placeholder="e.g. ICICI-ABCD01234" required>
+                      <div class="invalid-feedback">Enter policy number.</div>
+                    </div>
+
+                    <div class="col-md-6">
+                      <label class="form-label">Insurer</label>
+                      <input type="text" class="form-control" name="insurer" placeholder="e.g. New India Assurance" required>
+                      <div class="invalid-feedback">Enter insurer name.</div>
+                    </div>
+
+                    <div class="col-md-6">
+                      <label class="form-label">Insurance Expiry</label>
+                      <input type="date" class="form-control" name="insExpiry" required>
+                      <div class="invalid-feedback">Expiry must be today or later.</div>
+                    </div>
+
+                    <div class="col-md-6">
+                      <label class="form-label">PUC Valid Till</label>
+                      <input type="date" class="form-control" name="puc" required>
+                      <div class="invalid-feedback">PUC validity must be today or later.</div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            
+            <div class="accordion-item">
+              <h2 class="accordion-header" id="finHead">
+                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#finSec">
+                  5. Finance (Hypothecation)
+                </button>
+              </h2>
+              <div id="finSec" class="accordion-collapse collapse" data-bs-parent="#rtoAccordion">
+                <div class="accordion-body" data-section="finance">
+                  <div class="form-check form-switch mb-3">
+                    <input class="form-check-input" type="checkbox" id="isHypo" name="isHypo">
+                    <label class="form-check-label" for="isHypo">Vehicle is under hypothecation / loan</label>
+                  </div>
+
+                  <div id="hypoBlock" class="row g-3 is-hidden">
+                    <div class="col-md-8">
+                      <label class="form-label">Bank / NBFC</label>
+                      <input type="text" class="form-control" name="bank">
+                      <div class="invalid-feedback">Enter financing institution.</div>
+                    </div>
+                    <div class="col-md-4">
+                      <label class="form-label">Agreement Date</label>
+                      <input type="date" class="form-control" name="agreement">
+                      <div class="invalid-feedback">Provide a valid date.</div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            
+            <div class="accordion-item">
+              <h2 class="accordion-header" id="upHead">
+                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#upSec">
+                  6. Uploads
+                </button>
+              </h2>
+              <div id="upSec" class="accordion-collapse collapse" data-bs-parent="#rtoAccordion">
+                <div class="accordion-body" data-section="uploads">
+                  <div class="row g-3">
+                    <div class="col-md-6">
+                      <label class="form-label">ID / Address Proof</label>
+                      <input type="file" class="form-control" name="idproof" accept=".pdf,.jpg,.jpeg,.png" required>
+                      <div class="small-hint">PDF/JPG/PNG, ≤ 2 MB</div>
+                      <div class="invalid-feedback">Upload a valid file ≤ 2 MB.</div>
+                    </div>
+                    <div class="col-md-6">
+                      <label class="form-label">Insurance Copy</label>
+                      <input type="file" class="form-control" name="inscopy" accept=".pdf,.jpg,.jpeg,.png" required>
+                      <div class="small-hint">PDF/JPG/PNG, ≤ 2 MB</div>
+                      <div class="invalid-feedback">Upload a valid file ≤ 2 MB.</div>
+                    </div>
+                    <div class="col-md-6">
+                      <label class="form-label">Vehicle Image (optional)</label>
+                      <input type="file" class="form-control" name="vehimg" accept=".jpg,.jpeg,.png">
+                      <div class="small-hint">JPG/PNG, ≤ 2 MB</div>
+                      <div class="invalid-feedback">Image must be JPG/PNG and ≤ 2 MB.</div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            
+            <div class="accordion-item">
+              <h2 class="accordion-header" id="decHead">
+                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#decSec">
+                  7. Declarations &amp; Submit
+                </button>
+              </h2>
+              <div id="decSec" class="accordion-collapse collapse" data-bs-parent="#rtoAccordion">
+                <div class="accordion-body" data-section="decl">
+                  <div class="mb-3 cap-box">
+                    <div class="row align-items-center g-2">
+                      <div class="col-auto"><span class="fw-semibold">CAPTCHA:</span></div>
+                      <div class="col-auto"><span id="capQ" class="fw-bold"></span></div>
+                      <div class="col-auto">=</div>
+                      <div class="col-6 col-md-3">
+                        <input type="number" id="capAns" class="form-control" placeholder="Answer" required>
+                        <div class="invalid-feedback">Incorrect answer.</div>
+                      </div>
+                      <div class="col-auto">
+                        <button type="button" class="btn btn-outline-secondary btn-sm" id="capRefresh">↻</button>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="form-check mb-3">
+                    <input class="form-check-input" type="checkbox" id="terms" required>
+                    <label class="form-check-label" for="terms">
+                      I declare that the information provided is true and I accept the terms.
+                    </label>
+                    <div class="invalid-feedback">You must accept the terms.</div>
+                  </div>
+
+                  <div class="d-grid gap-2">
+                    <button id="submitBtn" class="btn btn-primary btn-lg" type="submit" disabled>Submit Application</button>
+                    <button class="btn btn-outline-secondary" type="reset">Reset</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </form>
+      </div>
+    </div>
+  </main>
+
+ 
+  <div class="position-fixed bottom-0 end-0 p-3" style="z-index: 1080">
+    <div id="submitToast" class="toast align-items-center text-bg-success border-0" role="alert" aria-live="assertive" aria-atomic="true">
+      <div class="d-flex">
+        <div class="toast-body">
+          ✅ Application submitted successfully.
+        </div>
+        <button type="button" class="btn-close btn-close-white me-2 m-auto" data-bs-dismiss="toast" aria-label="Close"></button>
+      </div>
+    </div>
+  </div>
+
+  
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="C:\MyHTMLandCSS\RTO Vehicle Registration\assets-rto.js"></script>
+</body>
+</html>

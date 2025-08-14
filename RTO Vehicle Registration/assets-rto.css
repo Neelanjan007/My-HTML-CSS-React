@@ -1,0 +1,30 @@
+body { background: #f7f8fb; }
+.container-narrow { max-width: 980px; }
+.card-soft { border: 0; box-shadow: 0 10px 30px rgba(10, 20, 30, .06); }
+
+.section-valid::after {
+  content: "✓";
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 22px;
+  height: 22px;
+  margin-left: .5rem;
+  background: #198754;
+  color: #fff;
+  border-radius: 50%;
+  font-weight: 700;
+  font-size: .85rem;
+}
+
+.small-hint { font-size: .85rem; color: #6c757d; }
+.cap-box { background: #fff; border: 1px dashed #ced4da; border-radius: .5rem; padding: .5rem .75rem; }
+.is-hidden { display: none !important; }
+
+
+.was-validated .form-control:invalid, .form-control.is-invalid { background-position: right calc(.375em + .1875rem) center; }
+.was-validated .form-control:valid, .form-control.is-valid { background-position: right calc(.375em + .1875rem) center; }
+
+
+.js-fuel-feedback { display: none; }
+.js-fuel-invalid .js-fuel-feedback { display: block; }
