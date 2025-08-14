@@ -1,0 +1,17 @@
+
+.btn-primary:hover {
+  box-shadow: 0 4px 12px rgba(13, 110, 253, 0.4);
+}
+
+.btn-success:hover {
+  box-shadow: 0 4px 12px rgba(25, 135, 84, 0.4);
+}
+
+
+.btn {
+  transition: box-shadow 0.2s ease, transform 0.2s ease;
+}
+
+.btn:hover {
+  transform: translateY(-1px);
+}
