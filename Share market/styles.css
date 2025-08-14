@@ -1,0 +1,40 @@
+
+.navbar-brand {
+  font-size: 1.4rem;
+}
+
+.nav-link {
+  transition: color 0.2s ease-in-out;
+}
+
+.nav-link:hover {
+  color: #ffc107;
+}
+
+
+.card {
+  border-radius: 0.5rem;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
+}
+
+
+.list-group-item {
+  border: none;
+  padding: 0.75rem 1rem;
+  font-size: 0.95rem;
+}
+
+.list-group-item:nth-child(even) {
+  background-color: #f8f9fa;
+}
+
+
+footer {
+  font-size: 0.9rem;
+  letter-spacing: 0.3px;
+}
