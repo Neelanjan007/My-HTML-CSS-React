@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Share Market Portfolio (Closure Demo)</title>
+
+  
+  <link rel="stylesheet" href="C:\MyHTMLandCSS\JavaScript Closure\styles.css" />
+</head>
+<body>
+  <header class="site-header">
+    <div class="wrap">
+      <h1>Share Market Portfolio</h1>
+      <p class="sub">JavaScript <strong>closure</strong> demo — buy, sell, and value your holdings.</p>
+    </div>
+  </header>
+
+  <main class="wrap">
+    <section class="grid">
+      
+      <article class="card">
+        <h2>Buy Shares</h2>
+        <form id="buyForm">
+          <div class="row">
+            <label>Company</label>
+            <input id="buyCompany" type="text" placeholder="e.g., TCS" required />
+          </div>
+          <div class="row">
+            <label>Quantity</label>
+            <input id="buyQty" type="number" min="1" placeholder="e.g., 10" required />
+          </div>
+          <div class="row">
+            <label>Price/Share (₹)</label>
+            <input id="buyPrice" type="number" min="1" step="0.01" placeholder="e.g., 3500" required />
+          </div>
+          <button type="submit" class="btn primary">Buy</button>
+        </form>
+      </article>
+
+      
+      <article class="card">
+        <h2>Sell Shares</h2>
+        <form id="sellForm">
+          <div class="row">
+            <label>Company</label>
+            <input id="sellCompany" type="text" placeholder="e.g., TCS" required />
+          </div>
+          <div class="row">
+            <label>Quantity</label>
+            <input id="sellQty" type="number" min="1" placeholder="e.g., 3" required />
+          </div>
+          <button type="submit" class="btn danger">Sell</button>
+        </form>
+      </article>
+
+      
+      <article class="card">
+        <h2>Actions</h2>
+        <div class="actions">
+          <button id="valueBtn" class="btn ghost">Show Total Portfolio Value</button>
+          <button id="exampleBtn" class="btn accent">Run Example Output</button>
+          <button id="clearLogBtn" class="btn mild">Clear Log</button>
+        </div>
+        <p class="hint">
+          Note: The underlying portfolio array is private inside a closure.
+          Only <code>buyShare</code>, <code>sellShare</code>, and <code>totalValue</code> can access it.
+        </p>
+      </article>
+    </section>
+
+   
+    <section class="card full">
+      <h2>Output</h2>
+      <pre id="log" class="log" aria-live="polite"></pre>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="wrap">Data for educational purposes only — Share Market 2025</div>
+  </footer>
+
+  
+  <script defer src="C:\MyHTMLandCSS\JavaScript Closure\app.js"></script>
+</body>
+</html>
