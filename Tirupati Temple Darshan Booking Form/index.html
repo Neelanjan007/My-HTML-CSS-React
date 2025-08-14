@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Tirupati Temple Darshan Booking Form</title>
+  
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+
+  <style>
+    .fade-in {
+      animation: fadeInUp 0.6s ease both;
+    }
+    @keyframes fadeInUp {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    
+    .bounce {
+      animation: bounceAnimation 0.4s ease;
+    }
+    @keyframes bounceAnimation {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-6px); }
+    }
+  </style>
+</head>
+<body class="bg-light">
+
+<div class="container py-5">
+  <div class="card shadow rounded-4 mx-auto fade-in" style="max-width: 600px;">
+    <div class="card-body">
+      <div class="text-center mb-4">
+        <img src="https://cdn-icons-png.flaticon.com/512/4134/4134008.png" alt="Temple Logo" width="60">
+        <h3 class="mt-2 fw-bold">Tirupati Temple Darshan Booking Form</h3>
+      </div>
+
+      <form id="darshanForm" novalidate>
+        <!-- Full Name -->
+        <div class="mb-3 form-floating">
+          <input type="text" class="form-control" id="fullName" placeholder="Full Name" required>
+          <label for="fullName">Full Name</label>
+          <div class="invalid-feedback">Full Name is required.</div>
+        </div>
+
+        <!-- Email -->
+        <div class="mb-3">
+          <label for="email" class="form-label">Email Address</label>
+          <input type="email" class="form-control" id="email" placeholder="name@example.com" required>
+          <div class="invalid-feedback">Please enter a valid email.</div>
+        </div>
+
+        <!-- Mobile -->
+        <div class="mb-3">
+          <label for="mobile" class="form-label">Mobile Number</label>
+          <div class="input-group">
+            <span class="input-group-text">+91</span>
+            <input type="tel" class="form-control" id="mobile" pattern="[0-9]{10}" required>
+            <div class="invalid-feedback">Enter a valid 10-digit mobile number.</div>
+          </div>
+        </div>
+
+        <!-- Gender -->
+        <div class="mb-3">
+          <label class="form-label">Gender</label>
+          <div>
+            <div class="form-check form-check-inline">
+              <input class="form-check-input" type="radio" name="gender" value="Male" required>
+              <label class="form-check-label">Male</label>
+            </div>
+            <div class="form-check form-check-inline">
+              <input class="form-check-input" type="radio" name="gender" value="Female">
+              <label class="form-check-label">Female</label>
+            </div>
+            <div class="form-check form-check-inline">
+              <input class="form-check-input" type="radio" name="gender" value="Other">
+              <label class="form-check-label">Other</label>
+            </div>
+          </div>
+          <div class="invalid-feedback">Please select your gender.</div>
+        </div>
+
+        <!-- Date & Time -->
+        <div class="row mb-3">
+          <div class="col-md-6">
+            <label for="darshanDate" class="form-label">Darshan Date</label>
+            <input type="date" class="form-control" id="darshanDate" required>
+            <div class="invalid-feedback">Select a date.</div>
+          </div>
+          <div class="col-md-6">
+            <label for="timeSlot" class="form-label">Darshan Time Slot</label>
+            <select id="timeSlot" class="form-select" required>
+              <option value="">Choose...</option>
+              <option>Morning</option>
+              <option>Afternoon</option>
+              <option>Evening</option>
+            </select>
+            <div class="invalid-feedback">Select a time slot.</div>
+          </div>
+        </div>
+
+        <!-- Tickets -->
+        <div class="mb-3">
+          <label for="tickets" class="form-label">Number of Tickets</label>
+          <input type="number" class="form-control" id="tickets" min="1" max="10" value="1" required>
+          <div class="invalid-feedback">Enter between 1 and 10 tickets.</div>
+        </div>
+
+        <!-- Seva Type -->
+        <div class="mb-3">
+          <label class="form-label">Seva Type</label>
+          <div class="form-check"><input class="form-check-input" type="checkbox" value="Archana" id="archana"><label class="form-check-label" for="archana">Archana</label></div>
+          <div class="form-check"><input class="form-check-input" type="checkbox" value="Abhishekam" id="abhishekam"><label class="form-check-label" for="abhishekam">Abhishekam</label></div>
+          <div class="form-check"><input class="form-check-input" type="checkbox" value="Special Entry Darshan" id="specialEntry"><label class="form-check-label" for="specialEntry">Special Entry Darshan</label></div>
+          <div class="form-check"><input class="form-check-input" type="checkbox" value="Suprabhata Seva" id="suprabhata"><label class="form-check-label" for="suprabhata">Suprabhata Seva</label></div>
+        </div>
+
+        <!-- ID Proof -->
+        <div class="mb-3">
+          <label for="idProof" class="form-label">
+            ID Proof Upload
+            <span data-bs-toggle="tooltip" title="Accepted formats: JPG, PNG, PDF">
+              <i class="bi bi-info-circle"></i>
+            </span>
+          </label>
+          <input type="file" class="form-control" id="idProof" accept=".jpg,.jpeg,.png,.pdf" required>
+          <div class="invalid-feedback">Please upload your ID proof.</div>
+        </div>
+
+        <!-- Address -->
+        <div class="mb-3">
+          <label for="address" class="form-label">Address</label>
+          <textarea class="form-control" id="address" rows="2" required></textarea>
+          <div class="invalid-feedback">Address is required.</div>
+        </div>
+
+        <!-- Buttons -->
+        <div class="d-grid gap-2">
+          <button type="submit" class="btn btn-primary" id="submitBtn">Submit</button>
+          <button type="reset" class="btn btn-secondary">Reset</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+
+<!-- Confirmation Modal -->
+<div class="modal fade" id="confirmationModal" tabindex="-1">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-body text-center">
+        <h5 class="fw-bold">🎉 Your Tirupati Darshan Booking is Confirmed!</h5>
+      </div>
+      <div class="modal-footer justify-content-center">
+        <button type="button" class="btn btn-success" data-bs-dismiss="modal">OK</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+<script src="script.js"></script>
+</body>
+</html>

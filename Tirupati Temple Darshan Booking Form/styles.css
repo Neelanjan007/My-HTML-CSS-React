@@ -1,0 +1,16 @@
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.card {
+  border: none;
+}
+
+.card-body {
+  padding: 2rem;
+}
+
+textarea {
+  resize: none;
+}
+
