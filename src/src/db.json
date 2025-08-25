@@ -1,0 +1,22 @@
+{
+    "tailoringItems": [
+        {
+            "id": 1,
+            "name": "Shirt",
+            "size": "M",
+            "price": 500
+        },
+        {
+            "id": 2,
+            "name": "Pant",
+            "size": "L",
+            "price": 700
+        },
+        {
+            "id": 3,
+            "name": "Dress",
+            "size": "S",
+            "price": 1200
+        }
+    ]
+}
